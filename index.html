@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sign up for updates</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+	<meta name="description" content="Join our list to get updates and early access.">
+</head>
+<body>
+	<header class="site-header" role="banner">
+		<div class="container header-inner">
+			<div class="brand">
+				<span class="logo" aria-hidden="true">■</span>
+				<span class="brand-name">FORM</span>
+			</div>
+		</div>
+	</header>
+
+	<main class="container" role="main">
+		<section class="hero">
+			<h1>Be first to know</h1>
+			<p class="subhead">Sign up to receive updates, product news, and early access invitations.</p>
+		</section>
+
+		<section class="card" aria-labelledby="signup-title">
+			<h2 id="signup-title">Join the list</h2>
+			<form id="signup-form" novalidate>
+				<div class="field">
+					<label for="name">Name</label>
+					<input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Doe">
+				</div>
+
+				<div class="field required">
+					<label for="email">Email<span class="req" aria-hidden="true">*</span></label>
+					<input id="email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required>
+					<p class="hint" id="email-hint">We'll only use this to send you updates.</p>
+				</div>
+
+				<div class="field">
+					<label for="company">Company</label>
+					<input id="company" name="company" type="text" autocomplete="organization" placeholder="Your Company">
+				</div>
+
+				<div class="field">
+					<label for="notes">What are you interested in?</label>
+					<textarea id="notes" name="notes" rows="4" placeholder="Share any context or questions"></textarea>
+				</div>
+
+				<button type="submit" id="submit-btn" class="button">Notify me</button>
+				<p class="form-msg" role="status" aria-live="polite" id="form-status"></p>
+			</form>
+		</section>
+	</main>
+
+	<footer class="site-footer" role="contentinfo">
+		<div class="container footer-inner">
+			<p>© <span id="year"></span> FORM. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script src="./script.js"></script>
+</body>
+</html>
+
