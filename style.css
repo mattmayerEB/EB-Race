@@ -21,12 +21,6 @@ body{
 	position:relative;
 }
 .page-bg{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;overflow:hidden;pointer-events:none}
-.racecar{font-size:120px;position:absolute;left:calc(100vw + 120px);transform:translateY(-50%);filter:drop-shadow(0 0 10px rgba(255,255,255,0.3))}
-.racecar-1{top:20%;animation:racecar 5s linear infinite;animation-delay:0s}
-.racecar-2{top:35%;animation:racecar 5s linear infinite;animation-delay:1.25s}
-.racecar-3{top:65%;animation:racecar 5s linear infinite;animation-delay:2.5s}
-.racecar-4{top:80%;animation:racecar 5s linear infinite;animation-delay:3.75s}
-@keyframes racecar{0%{left:calc(100vw + 120px);transform:translateY(-50%) rotate(0deg)}10%{transform:translateY(-50%) rotate(0deg)}90%{transform:translateY(-50%) rotate(0deg)}100%{left:-120px;transform:translateY(-50%) rotate(0deg)}}
 .container{max-width:900px;margin:0 auto;padding:0 32px}
 .site-header{border-bottom:1px solid var(--border);background:var(--bg);backdrop-filter:blur(10px);position:relative;z-index:1;overflow:hidden}
 .header-inner{display:flex;align-items:center;justify-content:center;padding:30px 0;position:relative;min-height:80px}
@@ -38,7 +32,7 @@ body{
 .brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:18px}
 .brand-name{letter-spacing:0.5px}
 .hero{padding:40px 0 24px;text-align:center;position:relative;z-index:1}
-.hero h1{margin:0 0 12px;font-size:36px;font-weight:600;line-height:1.2;color:#ffffff;text-shadow:0 0 20px #2563eb, 0 0 40px #2563eb}
+.hero h1{margin:0 0 12px;font-size:36px;font-weight:600;line-height:1.2;color:#ffffff;text-shadow:0 0 20px #dc2626, 0 0 40px #dc2626}
 .subhead{margin:0;color:#ffffff;font-size:18px;max-width:500px;margin:0 auto;text-shadow:0 0 15px #2563eb, 0 0 30px #2563eb}
 .card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:32px;margin:24px 0;box-shadow:var(--shadow);transition:box-shadow .3s ease;position:relative;z-index:1}
 .card:hover{box-shadow:var(--shadow-hover)}
@@ -138,11 +132,6 @@ body{
 	.hero h1{font-size:32px}
 	.subhead{font-size:17px}
 	.card{padding:28px;margin:24px 0}
-	.racecar{font-size:100px}
-	.racecar-1{top:25%}
-	.racecar-2{top:40%}
-	.racecar-3{top:60%}
-	.racecar-4{top:75%}
 	.field input,.field textarea,.field select{font-size:16px;padding:14px 16px;min-height:52px}
 	.button{font-size:16px;padding:16px 24px;min-height:52px}
 }
@@ -164,11 +153,6 @@ body{
 	.main-logo{height:45px;animation:logoSlide 8s linear infinite}
 	.texas-logo{height:45px;animation:logoSlide 8s linear infinite}
 	.nhra-logo{height:45px;animation:logoSlide 8s linear infinite}
-	.racecar{font-size:80px}
-	.racecar-1{top:30%}
-	.racecar-2{top:45%}
-	.racecar-3{top:55%}
-	.racecar-4{top:70%}
 }
 
 /* Touch device optimizations */

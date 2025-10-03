@@ -31,6 +31,9 @@ function doPost(e) {
       data.make || "",
       data.model || "",
       data.state || "",
+      data.streetAddress || "",
+      data.city || "",
+      data.zipCode || "",
       data.email || "",
       data.phone || "",
       data.userAgent || ""
@@ -49,7 +52,7 @@ function doPost(e) {
 
 ## Customize
 - Colors are black/white/blue with subtle gray accents in `style.css`.
-- Form fields: firstName, lastName, year, make, model, state, email, phone (all required). Modify as needed.
+- Form fields: firstName, lastName, year, make, model, state, streetAddress, city, zipCode, email, phone (all required). Modify as needed.
 
 ## Privacy note
 Only collect information you need. Consider adding a brief privacy statement on the page.

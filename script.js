@@ -39,6 +39,9 @@
 		var make = (formData.get("make") || "").toString().trim();
 		var model = (formData.get("model") || "").toString().trim();
 		var state = (formData.get("state") || "").toString().trim();
+		var streetAddress = (formData.get("streetAddress") || "").toString().trim();
+		var city = (formData.get("city") || "").toString().trim();
+		var zipCode = (formData.get("zipCode") || "").toString().trim();
 		var email = (formData.get("email") || "").toString().trim();
 		var phone = (formData.get("phone") || "").toString().trim();
 
@@ -54,7 +57,7 @@
 			setStatus("Please enter a valid email.", "error");
 			return;
 		}
-		if(!year || !make || !model || !state || !phone){
+		if(!year || !make || !model || !state || !streetAddress || !city || !zipCode || !phone){
 			setStatus("All fields are required.", "error");
 			return;
 		}
@@ -70,6 +73,9 @@
 			make: make,
 			model: model,
 			state: state,
+			streetAddress: streetAddress,
+			city: city,
+			zipCode: zipCode,
 			email: email,
 			phone: phone,
 			userAgent: navigator.userAgent,
