@@ -9,6 +9,30 @@
 	var yearEl = document.getElementById("year");
 	if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
+	function startLightSequence(){
+		var leftLights = document.querySelectorAll('.left-tree .light');
+		var rightLights = document.querySelectorAll('.right-tree .light');
+		
+		function activateLight(lights, index){
+			if(index < lights.length){
+				lights[index].classList.add('active');
+				setTimeout(() => {
+					lights[index].classList.remove('active');
+					activateLight(lights, index + 1);
+				}, 800);
+			} else {
+				setTimeout(() => startLightSequence(), 3000);
+			}
+		}
+		
+		setTimeout(() => {
+			activateLight(leftLights, 0);
+			activateLight(rightLights, 0);
+		}, 1000);
+	}
+	
+	startLightSequence();
+
 	function setStatus(message, type){
 		statusEl.textContent = message || "";
 		statusEl.className = "form-msg" + (type ? " " + type : "");
