@@ -1,12 +1,12 @@
 :root{
-	--bg:#0a0a0a;
-	--fg:#ffffff;
-	--muted:#9ca3af; /* gray */
-	--primary:#3b82f6; /* blue */
-	--border:#374151;
-	--card-bg:#111111;
-	--shadow:0 4px 12px rgba(0,0,0,.3);
-	--shadow-hover:0 8px 24px rgba(0,0,0,.4);
+	--bg:#89CFF0;
+	--fg:#1a1a1a;
+	--muted:#4a5568; /* gray */
+	--primary:#2563eb; /* blue */
+	--border:#a0aec0;
+	--card-bg:#ffffff;
+	--shadow:0 4px 12px rgba(0,0,0,.1);
+	--shadow-hover:0 8px 24px rgba(0,0,0,.15);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -20,18 +20,24 @@ body{
 	-moz-osx-font-smoothing:grayscale;
 	position:relative;
 }
-.page-bg{position:fixed;top:0;left:0;right:0;bottom:0;opacity:0.03;z-index:0;overflow:hidden;pointer-events:none}
-.bg-image{width:200%;height:auto;animation:pan 30s linear infinite;position:absolute;top:50%;left:-50%;transform:translateY(-50%)}
-@keyframes pan{0%{transform:translateY(-50%) translateX(-25%)}100%{transform:translateY(-50%) translateX(25%)}}
+.page-bg{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;overflow:hidden;pointer-events:none}
+.racecar{font-size:120px;position:absolute;left:calc(100vw + 120px);transform:translateY(-50%);filter:drop-shadow(0 0 10px rgba(255,255,255,0.3))}
+.racecar-1{top:20%;animation:racecar 5s linear infinite;animation-delay:0s}
+.racecar-2{top:35%;animation:racecar 5s linear infinite;animation-delay:1.25s}
+.racecar-3{top:65%;animation:racecar 5s linear infinite;animation-delay:2.5s}
+.racecar-4{top:80%;animation:racecar 5s linear infinite;animation-delay:3.75s}
+@keyframes racecar{0%{left:calc(100vw + 120px);transform:translateY(-50%) rotate(0deg)}10%{transform:translateY(-50%) rotate(0deg)}90%{transform:translateY(-50%) rotate(0deg)}100%{left:-120px;transform:translateY(-50%) rotate(0deg)}}
 .container{max-width:900px;margin:0 auto;padding:0 32px}
-.site-header{border-bottom:1px solid var(--border);background:var(--bg);backdrop-filter:blur(10px);position:relative;z-index:1}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.site-header{border-bottom:1px solid var(--border);background:var(--bg);backdrop-filter:blur(10px);position:relative;z-index:1;overflow:hidden}
+.header-inner{display:flex;align-items:center;justify-content:center;padding:30px 0;position:relative;min-height:80px}
+.header-logo{position:absolute;top:50%;transform:translateY(-50%)}
+.nhra-logo{height:60px;width:auto;animation:logoSlide 8s linear infinite}
+@keyframes logoSlide{0%{left:100%}100%{left:-100%}}
 .brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:18px}
-.header-logo{height:28px;width:auto}
 .brand-name{letter-spacing:0.5px}
 .hero{padding:40px 0 24px;text-align:center;position:relative;z-index:1}
-.hero h1{margin:0 0 12px;font-size:36px;font-weight:600;line-height:1.2}
-.subhead{margin:0;color:var(--muted);font-size:18px;max-width:500px;margin:0 auto}
+.hero h1{margin:0 0 12px;font-size:36px;font-weight:600;line-height:1.2;color:#ffffff;text-shadow:0 0 20px #2563eb, 0 0 40px #2563eb}
+.subhead{margin:0;color:#ffffff;font-size:18px;max-width:500px;margin:0 auto;text-shadow:0 0 15px #2563eb, 0 0 30px #2563eb}
 .card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:32px;margin:24px 0;box-shadow:var(--shadow);transition:box-shadow .3s ease;position:relative;z-index:1}
 .card:hover{box-shadow:var(--shadow-hover)}
 .card h2{margin-top:0;margin-bottom:24px;font-size:24px;font-weight:600;text-align:center;color:var(--fg);position:relative;z-index:1}
@@ -45,7 +51,7 @@ body{
 	padding:14px 16px;
 	font-size:16px;
 	transition:all .2s ease;
-	background:var(--bg);
+	background:#ffffff;
 	color:var(--fg);
 	min-height:52px;
 	width:100%;
@@ -54,7 +60,7 @@ body{
 	appearance:none;
 }
 .field select{
-	background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+	background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234a5568' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
 	background-position:right 12px center;
 	background-repeat:no-repeat;
 	background-size:16px;
@@ -63,7 +69,7 @@ body{
 .field input:focus,.field textarea:focus,.field select:focus{
 	outline:none;
 	border-color:var(--primary);
-	box-shadow:0 0 0 4px rgba(59,130,246,.2);
+	box-shadow:0 0 0 4px rgba(37,99,235,.2);
 	transform:translateY(-1px);
 }
 .field textarea{min-height:100px;resize:vertical;font-family:inherit}
@@ -83,25 +89,26 @@ body{
 	min-height:52px;
 	width:100%;
 	margin-top:8px;
-	box-shadow:0 4px 12px rgba(59,130,246,.3);
+	box-shadow:0 4px 12px rgba(37,99,235,.3);
 	position:relative;
 	z-index:1;
 }
 .button:hover{
 	opacity:.95;
 	transform:translateY(-2px);
-	box-shadow:0 6px 20px rgba(59,130,246,.4);
+	box-shadow:0 6px 20px rgba(37,99,235,.4);
 }
 .button:active{transform:translateY(0px)}
 .button:disabled{
 	opacity:0.6;
 	cursor:not-allowed;
 	transform:none;
-	box-shadow:0 2px 8px rgba(59,130,246,.2);
+	box-shadow:0 2px 8px rgba(37,99,235,.2);
 }
 .form-msg{min-height:32px;margin-top:16px;font-size:16px;text-align:center;padding:12px;border-radius:8px;position:relative;z-index:1}
-.form-msg.error{color:#fca5a5;background:#2d1b1b;border:1px solid #7f1d1d}
-.form-msg.success{color:#86efac;background:#1b2d1b;border:1px solid #166534}
+.privacy-notice{margin-top:24px;font-size:12px;color:var(--muted);line-height:1.4;text-align:left;position:relative;z-index:1}
+.form-msg.error{color:#dc2626;background:#fef2f2;border:1px solid #fecaca}
+.form-msg.success{color:#059669;background:#f0fdf4;border:1px solid #bbf7d0}
 .site-footer{border-top:1px solid var(--border);background:var(--bg);margin-top:40px;position:relative;z-index:1}
 .footer-inner{padding:24px 0;color:var(--muted);font-size:15px;text-align:center}
 
@@ -120,9 +127,26 @@ body{
 	.button{font-size:17px;padding:18px 28px;min-height:56px}
 }
 
+/* iPad optimizations */
+@media (max-width:1024px) and (min-width:768px){
+	.header-inner{padding:25px 0;min-height:70px}
+	.nhra-logo{height:50px;animation:logoSlide 8s linear infinite}
+	.hero h1{font-size:32px}
+	.subhead{font-size:17px}
+	.card{padding:28px;margin:24px 0}
+	.racecar{font-size:100px}
+	.racecar-1{top:25%}
+	.racecar-2{top:40%}
+	.racecar-3{top:60%}
+	.racecar-4{top:75%}
+	.field input,.field textarea,.field select{font-size:16px;padding:14px 16px;min-height:52px}
+	.button{font-size:16px;padding:16px 24px;min-height:52px}
+}
+
 /* Mobile optimizations */
 @media (max-width:767px){
 	.container{padding:0 24px}
+	.header-inner{padding:20px 0;min-height:60px}
 	.hero{padding:32px 0 20px}
 	.hero h1{font-size:28px}
 	.subhead{font-size:16px}
@@ -133,6 +157,12 @@ body{
 	.field input,.field textarea,.field select{font-size:16px;padding:14px 16px;min-height:52px;width:100%;box-sizing:border-box}
 	.field textarea{min-height:100px}
 	.button{font-size:16px;padding:16px 24px;min-height:52px}
+	.nhra-logo{height:45px;animation:logoSlide 8s linear infinite}
+	.racecar{font-size:80px}
+	.racecar-1{top:30%}
+	.racecar-2{top:45%}
+	.racecar-3{top:55%}
+	.racecar-4{top:70%}
 }
 
 /* Touch device optimizations */
