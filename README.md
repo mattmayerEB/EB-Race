@@ -4,9 +4,9 @@ This site collects lead info and sends it to a Google Sheet via a Google Apps Sc
 
 ## How to set up the Google Sheet + Apps Script
 
-1. Create a new Google Sheet and name it, e.g. "Leads".
+1. Create a new Google Sheet and name it, e.g. "Race Leads".
 2. In the Sheet, add a header row in row 1 with these columns:
-	- timestamp, name, email, company, notes, userAgent
+	- timestamp, firstName, lastName, year, make, model, state, email, phone, userAgent
 3. Open Extensions → Apps Script. Replace the default code with the script below.
 4. Click Deploy → Manage deployments → New deployment → type: Web app.
 	- Execute as: Me
@@ -25,10 +25,14 @@ function doPost(e) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     sheet.appendRow([
       new Date(),
-      data.name || "",
+      data.firstName || "",
+      data.lastName || "",
+      data.year || "",
+      data.make || "",
+      data.model || "",
+      data.state || "",
       data.email || "",
-      data.company || "",
-      data.notes || "",
+      data.phone || "",
       data.userAgent || ""
     ]);
 
@@ -45,7 +49,7 @@ function doPost(e) {
 
 ## Customize
 - Colors are black/white/blue with subtle gray accents in `style.css`.
-- Form fields: name, email (required), company, notes. Modify as needed.
+- Form fields: firstName, lastName, year, make, model, state, email, phone (all required). Modify as needed.
 
 ## Privacy note
 Only collect information you need. Consider adding a brief privacy statement on the page.

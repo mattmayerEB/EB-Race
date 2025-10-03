@@ -33,11 +33,19 @@
 		setStatus("", "");
 
 		var formData = new FormData(form);
-		var name = (formData.get("name") || "").toString().trim();
+		var firstName = (formData.get("firstName") || "").toString().trim();
+		var lastName = (formData.get("lastName") || "").toString().trim();
+		var year = (formData.get("year") || "").toString().trim();
+		var make = (formData.get("make") || "").toString().trim();
+		var model = (formData.get("model") || "").toString().trim();
+		var state = (formData.get("state") || "").toString().trim();
 		var email = (formData.get("email") || "").toString().trim();
-		var company = (formData.get("company") || "").toString().trim();
-		var notes = (formData.get("notes") || "").toString().trim();
+		var phone = (formData.get("phone") || "").toString().trim();
 
+		if(!firstName || !lastName){
+			setStatus("First name and last name are required.", "error");
+			return;
+		}
 		if(!email){
 			setStatus("Email is required.", "error");
 			return;
@@ -46,16 +54,24 @@
 			setStatus("Please enter a valid email.", "error");
 			return;
 		}
+		if(!year || !make || !model || !state || !phone){
+			setStatus("All fields are required.", "error");
+			return;
+		}
 		if(!APPS_SCRIPT_URL){
 			setStatus("Configuration needed. Add your Apps Script URL in script.js.", "error");
 			return;
 		}
 
 		var payload = {
-			name: name,
+			firstName: firstName,
+			lastName: lastName,
+			year: year,
+			make: make,
+			model: model,
+			state: state,
 			email: email,
-			company: company,
-			notes: notes,
+			phone: phone,
 			userAgent: navigator.userAgent,
 			timestamp: new Date().toISOString()
 		};
@@ -77,8 +93,8 @@
 			if(isSuccess){
 				// Best-effort read; ignore errors if CORS prevents reading the body
 				try{ await res.clone().json(); }catch(_){ /* ignore */ }
-				form.reset();
-				setStatus("Thanks! You're on the list.", "success");
+			form.reset();
+			setStatus("Thanks! Your information has been submitted.", "success");
 				return;
 			}
 
