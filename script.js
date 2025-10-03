@@ -76,6 +76,9 @@
 			timestamp: new Date().toISOString()
 		};
 
+		// Debug: Log the payload being sent
+		console.log("Form data being sent:", payload);
+
 		try{
 			disableForm(true);
 			setStatus("Submitting…", "");
