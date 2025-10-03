@@ -9,29 +9,44 @@
 	var yearEl = document.getElementById("year");
 	if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-	function startLightSequence(){
+	function updateLightsBasedOnForm(){
 		var leftLights = document.querySelectorAll('.left-tree .light');
 		var rightLights = document.querySelectorAll('.right-tree .light');
+		var formInputs = document.querySelectorAll('input[required], select[required]');
+		var filledInputs = 0;
 		
-		function activateLight(lights, index){
-			if(index < lights.length){
-				lights[index].classList.add('active');
-				setTimeout(() => {
-					lights[index].classList.remove('active');
-					activateLight(lights, index + 1);
-				}, 800);
+		// Count filled required fields
+		formInputs.forEach(input => {
+			if(input.type === 'checkbox'){
+				if(input.checked) filledInputs++;
 			} else {
-				setTimeout(() => startLightSequence(), 3000);
+				if(input.value.trim() !== '') filledInputs++;
 			}
-		}
+		});
 		
-		setTimeout(() => {
-			activateLight(leftLights, 0);
-			activateLight(rightLights, 0);
-		}, 1000);
+		// Calculate how many lights should be active
+		var lightsToActivate = Math.floor((filledInputs / formInputs.length) * 5);
+		
+		// Reset all lights
+		leftLights.forEach(light => light.classList.remove('active'));
+		rightLights.forEach(light => light.classList.remove('active'));
+		
+		// Activate lights based on form completion
+		for(var i = 0; i < lightsToActivate && i < 5; i++){
+			leftLights[i].classList.add('active');
+			rightLights[i].classList.add('active');
+		}
 	}
 	
-	startLightSequence();
+	// Add event listeners to all form inputs
+	var formInputs = document.querySelectorAll('input, select');
+	formInputs.forEach(input => {
+		input.addEventListener('input', updateLightsBasedOnForm);
+		input.addEventListener('change', updateLightsBasedOnForm);
+	});
+	
+	// Initial update
+	updateLightsBasedOnForm();
 
 	function setStatus(message, type){
 		statusEl.textContent = message || "";
