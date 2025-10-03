@@ -12,12 +12,19 @@
 </head>
 <body>
 	<div class="page-bg">
+		<div class="drag-car-left">
+			<img src="./drag-car-transparent.png" alt="Drag Car" class="drag-car">
+		</div>
+		<div class="drag-car-right">
+			<img src="./drag-car-transparent.png" alt="Drag Car" class="drag-car">
+		</div>
 	</div>
 	<header class="site-header" role="banner">
 		<div class="container header-inner">
 			<div class="header-logo">
 				<img src="./logo.png" alt="Logo" class="main-logo">
 				<img src="./Texas Motorplex.png" alt="Texas Motorplex Logo" class="texas-logo">
+				<img src="./Paul-Lee-Logo-300x300.png" alt="Paul Lee Logo" class="paul-lee-logo">
 				<img src="./National_Hot_Rod_Association_Logo.svg.png" alt="NHRA Logo" class="nhra-logo">
 			</div>
 		</div>
@@ -158,9 +165,17 @@
 					</div>
 				</div>
 
+				<div class="field">
+					<label class="checkbox-label">
+						<input id="consent" name="consent" type="checkbox" required>
+						<span class="checkbox-text">I agree to the privacy terms below<span class="req" aria-hidden="true">*</span></span>
+					</label>
+				</div>
+
+				<p class="privacy-notice">We respect your privacy and want to make sure you are aware of a few things. By filling out this form you explicitly agree to be contacted by Everything Breaks Inc. About their products or services by phone call, pre-recorded, email, and/or text message at the telephone/mobile number/email that you entered above. These calls/messages may be sent using automated telephone technology, even if your telephone or mobile number is currently listed on any state, federal or corporate "Do Not Call" list. Message and data rates may apply. You are not required to give your consent here as a condition of any purchase.</p>
+
 				<button type="submit" id="submit-btn" class="button">Submit Information</button>
 				<p class="form-msg" role="status" aria-live="polite" id="form-status"></p>
-				<p class="privacy-notice">We respect your privacy and want to make sure you are aware of a few things. By filling out this form you explicitly agree to be contacted by Everything Breaks Inc. About their products or services by phone call, pre-recorded, email, and/or text message at the telephone/mobile number/email that you entered above. These calls/messages may be sent using automated telephone technology, even if your telephone or mobile number is currently listed on any state, federal or corporate "Do Not Call" list. Message and data rates may apply. You are not required to give your consent here as a condition of any purchase.</p>
 			</form>
 		</section>
 	</main>

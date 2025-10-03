@@ -20,22 +20,26 @@ body{
 	-moz-osx-font-smoothing:grayscale;
 	position:relative;
 }
-.page-bg{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;overflow:hidden;pointer-events:none;background:#2a2a2a;background-image:radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 1px, transparent 1px), radial-gradient(circle at 40% 60%, rgba(255,255,255,0.08) 1px, transparent 1px);background-size:50px 50px, 80px 80px, 60px 60px;background-position:0 0, 25px 25px, 40px 40px}
+.page-bg{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;overflow:hidden;pointer-events:none;background:#89CFF0}
+.drag-car-left{position:absolute;top:50%;left:5%;transform:translateY(-50%);z-index:2}
+.drag-car-right{position:absolute;top:50%;right:5%;transform:translateY(-50%);z-index:2}
+.drag-car{max-width:250px;max-height:180px;object-fit:contain}
 .container{max-width:900px;margin:0 auto;padding:0 32px}
-.site-header{border-bottom:1px solid var(--border);background:#ffffff;backdrop-filter:blur(10px);position:relative;z-index:1;overflow:hidden}
+.site-header{border-bottom:1px solid var(--border);background:#ffffff;backdrop-filter:blur(10px);position:relative;z-index:3;overflow:hidden}
 .header-inner{display:flex;align-items:center;justify-content:center;padding:30px 0;position:relative;min-height:80px}
 .header-logo{position:absolute;top:50%;transform:translateY(-50%);display:flex;gap:20px;align-items:center}
 .main-logo{height:60px;width:auto;animation:logoSlide 8s linear infinite}
 .texas-logo{height:60px;width:auto;animation:logoSlide 8s linear infinite}
+.paul-lee-logo{height:75px;width:auto;animation:logoSlide 8s linear infinite}
 .nhra-logo{height:60px;width:auto;animation:logoSlide 8s linear infinite}
 @keyframes logoSlide{0%{left:100%}100%{left:-100%}}
 .brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:18px}
 .brand-name{letter-spacing:0.5px}
-.hero{padding:40px 0 24px;text-align:center;position:relative;z-index:1}
+.hero{padding:40px 0 24px;text-align:center;position:relative;z-index:3}
 .hero h1{margin:0 0 12px;font-size:36px;font-weight:600;line-height:1.2;color:#ff0000;text-shadow:2px 2px 4px #0000ff;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .subhead{margin:0;color:#ffffff;font-size:18px;max-width:500px;margin:0 auto;text-shadow:0 0 15px #2563eb, 0 0 30px #2563eb}
-.card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:32px 120px;margin:24px 0;box-shadow:var(--shadow);transition:box-shadow .3s ease;position:relative;z-index:1}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:32px 120px;margin:24px 0;box-shadow:var(--shadow);transition:box-shadow .3s ease;position:relative;z-index:3}
 .starting-lights{display:flex;justify-content:space-between;position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0}
 .light-tree{display:flex;flex-direction:column;gap:8px;align-items:center;padding:20px}
 .left-tree{position:absolute;left:20px;top:50%;transform:translateY(-50%)}
@@ -50,6 +54,12 @@ body{
 .field-row .field{flex:1;margin:0;min-width:0}
 .field{display:flex;flex-direction:column;margin:16px 0;position:relative;z-index:1}
 .field label{font-weight:600;margin-bottom:8px;font-size:16px;color:var(--fg)}
+.checkbox-label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin:16px 0;position:relative}
+.checkbox-label input[type="checkbox"]{width:18px;height:18px;margin:0;flex-shrink:0;margin-top:2px;cursor:pointer;opacity:0;position:absolute}
+.checkbox-label::before{content:"";width:18px;height:18px;border:2px solid #ccc;border-radius:4px;background:#fff;display:block;margin-top:2px;transition:all 0.2s ease}
+.checkbox-label input[type="checkbox"]:checked + .checkbox-text::before{content:"✓";position:absolute;left:-30px;top:2px;color:#000;font-weight:bold;font-size:14px}
+.checkbox-text{font-size:14px;line-height:1.4;color:var(--fg);position:relative;padding-left:30px}
+.privacy-notice{font-size:12px;line-height:1.4;color:var(--muted);margin:16px 0;padding:16px;background:rgba(0,0,0,0.05);border-radius:8px;border-left:4px solid var(--primary)}
 .field input,.field textarea,.field select{
 	border:2px solid var(--border);
 	border-radius:12px;
@@ -137,6 +147,7 @@ body{
 	.header-inner{padding:25px 0;min-height:70px}
 	.main-logo{height:50px;animation:logoSlide 8s linear infinite}
 	.texas-logo{height:50px;animation:logoSlide 8s linear infinite}
+	.paul-lee-logo{height:65px;animation:logoSlide 8s linear infinite}
 	.nhra-logo{height:50px;animation:logoSlide 8s linear infinite}
 	.hero h1{font-size:32px}
 	.subhead{font-size:17px}
@@ -167,6 +178,7 @@ body{
 	.button{font-size:16px;padding:16px 24px;min-height:52px}
 	.main-logo{height:45px;animation:logoSlide 8s linear infinite}
 	.texas-logo{height:45px;animation:logoSlide 8s linear infinite}
+	.paul-lee-logo{height:55px;animation:logoSlide 8s linear infinite}
 	.nhra-logo{height:45px;animation:logoSlide 8s linear infinite}
 }
 

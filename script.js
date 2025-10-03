@@ -68,9 +68,14 @@
 		var zipCode = (formData.get("zipCode") || "").toString().trim();
 		var email = (formData.get("email") || "").toString().trim();
 		var phone = (formData.get("phone") || "").toString().trim();
+		var consent = formData.get("consent");
 
 		if(!firstName || !lastName){
 			setStatus("First name and last name are required.", "error");
+			return;
+		}
+		if(!consent){
+			setStatus("You must agree to the privacy terms to continue.", "error");
 			return;
 		}
 		if(!email){
