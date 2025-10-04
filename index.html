@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
 	<title>EB Stampede of Speed</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./style.css">
 	<meta name="description" content="Join our list to get updates and early access.">
+	<meta name="theme-color" content="#0099CC">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 <body>
 	<div class="page-bg">
@@ -59,7 +63,7 @@
 				</div>
 			</div>
 			<h2 id="signup-title">Get Started</h2>
-			<form id="signup-form" novalidate>
+			<form id="signup-form" novalidate role="form" aria-label="Sign up form for WeCare promotion">
 				<div class="field-row">
 					<div class="field">
 						<label for="firstName">First Name<span class="req" aria-hidden="true">*</span></label>
@@ -180,7 +184,7 @@
 
 				<p class="privacy-notice">We respect your privacy and want to make sure you are aware of a few things. By filling out this form you explicitly agree to be contacted by Everything Breaks Inc. About their products or services by phone call, pre-recorded, email, and/or text message at the telephone/mobile number/email that you entered above. These calls/messages may be sent using automated telephone technology, even if your telephone or mobile number is currently listed on any state, federal or corporate "Do Not Call" list. Message and data rates may apply. You are not required to give your consent here as a condition of any purchase.</p>
 
-				<button type="submit" id="submit-btn" class="button">Submit Information</button>
+				<button type="submit" id="submit-btn" class="button" aria-describedby="form-status">Submit Information</button>
 				<p class="form-msg" role="status" aria-live="polite" id="form-status"></p>
 			</form>
 		</section>
