@@ -163,11 +163,22 @@
 		}
 	}
 	
-	// Add event listeners to all form inputs
+	// Add event listeners to all form inputs with mobile optimization
 	var formInputs = document.querySelectorAll('input, select');
 	formInputs.forEach(input => {
-		input.addEventListener('input', updateLightsBasedOnForm);
-		input.addEventListener('change', updateLightsBasedOnForm);
+		// Use both input and change events for better mobile compatibility
+		input.addEventListener('input', updateLightsBasedOnForm, { passive: true });
+		input.addEventListener('change', updateLightsBasedOnForm, { passive: true });
+		
+		// Add touch event support for better mobile interaction
+		if ('ontouchstart' in window) {
+			input.addEventListener('touchstart', function() {
+				this.style.transform = 'scale(1.02)';
+			}, { passive: true });
+			input.addEventListener('touchend', function() {
+				this.style.transform = 'scale(1)';
+			}, { passive: true });
+		}
 	});
 	
 	// Initial update
@@ -285,6 +296,23 @@
 			setStatus("Something went wrong. Please try again.", "error");
 		} finally{
 			disableForm(false);
+		}
+	}
+
+	// Mobile-specific optimizations
+	if ('ontouchstart' in window) {
+		// Add mobile-specific optimizations
+		document.body.classList.add('touch-device');
+		
+		// Optimize button interactions for touch
+		var submitBtn = document.getElementById('submit-btn');
+		if (submitBtn) {
+			submitBtn.addEventListener('touchstart', function() {
+				this.style.transform = 'scale(0.98)';
+			}, { passive: true });
+			submitBtn.addEventListener('touchend', function() {
+				this.style.transform = 'scale(1)';
+			}, { passive: true });
 		}
 	}
 
