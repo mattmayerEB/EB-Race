@@ -91,46 +91,58 @@
 		makeSelect.addEventListener("change", updateModels);
 	}
 
-	// Enforce numbers-only input for phone and zip code
+	// Enforce numbers-only input and formatting for phone and zip code
 	var phoneInput = document.getElementById("phone");
 	var zipCodeInput = document.getElementById("zipCode");
 	
-	function enforceNumericInput(e){
-		// Allow: backspace, delete, tab, escape, enter
-		if ([46, 8, 9, 27, 13].indexOf(e.keyCode) !== -1 ||
-			// Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
-			(e.keyCode === 65 && e.ctrlKey === true) ||
-			(e.keyCode === 67 && e.ctrlKey === true) ||
-			(e.keyCode === 86 && e.ctrlKey === true) ||
-			(e.keyCode === 88 && e.ctrlKey === true) ||
-			// Allow: home, end, left, right
-			(e.keyCode >= 35 && e.keyCode <= 39)) {
-			return;
-		}
-		// Ensure that it is a number and stop the keypress
-		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-			e.preventDefault();
+	// Format phone number as (xxx) xxx-xxxx
+	function formatPhoneNumber(value){
+		// Strip all non-numeric characters
+		var numbers = value.replace(/[^0-9]/g, '');
+		
+		// Limit to 10 digits
+		numbers = numbers.substring(0, 10);
+		
+		// Format based on length
+		if(numbers.length === 0){
+			return '';
+		} else if(numbers.length <= 3){
+			return '(' + numbers;
+		} else if(numbers.length <= 6){
+			return '(' + numbers.substring(0, 3) + ') ' + numbers.substring(3);
+		} else {
+			return '(' + numbers.substring(0, 3) + ') ' + numbers.substring(3, 6) + '-' + numbers.substring(6);
 		}
 	}
 	
-	function stripNonNumeric(e){
-		// Remove any non-numeric characters on input/paste
-		e.target.value = e.target.value.replace(/[^0-9]/g, '');
+	// Format zip code (5 digits max)
+	function formatZipCode(value){
+		// Strip all non-numeric characters and limit to 5 digits
+		return value.replace(/[^0-9]/g, '').substring(0, 5);
 	}
 	
 	if(phoneInput){
-		phoneInput.addEventListener("keydown", enforceNumericInput);
-		phoneInput.addEventListener("input", stripNonNumeric);
+		phoneInput.addEventListener("input", function(e){
+			var formatted = formatPhoneNumber(e.target.value);
+			e.target.value = formatted;
+		});
+		
 		phoneInput.addEventListener("paste", function(e){
-			setTimeout(function(){ stripNonNumeric(e); }, 0);
+			setTimeout(function(){
+				phoneInput.value = formatPhoneNumber(phoneInput.value);
+			}, 0);
 		});
 	}
 	
 	if(zipCodeInput){
-		zipCodeInput.addEventListener("keydown", enforceNumericInput);
-		zipCodeInput.addEventListener("input", stripNonNumeric);
+		zipCodeInput.addEventListener("input", function(e){
+			e.target.value = formatZipCode(e.target.value);
+		});
+		
 		zipCodeInput.addEventListener("paste", function(e){
-			setTimeout(function(){ stripNonNumeric(e); }, 0);
+			setTimeout(function(){
+				zipCodeInput.value = formatZipCode(zipCodeInput.value);
+			}, 0);
 		});
 	}
 
@@ -218,7 +230,8 @@
 		var city = (formData.get("city") || "").toString().trim();
 		var zipCode = (formData.get("zipCode") || "").toString().trim();
 		var email = (formData.get("email") || "").toString().trim();
-		var phone = (formData.get("phone") || "").toString().trim();
+		// Strip formatting from phone number before sending (keep only digits)
+		var phone = (formData.get("phone") || "").toString().replace(/[^0-9]/g, '');
 		var consent = formData.get("consent");
 
 		if(!firstName || !lastName){
@@ -239,6 +252,16 @@
 		}
 		if(!year || !make || !model || !state || !streetAddress || !city || !zipCode || !phone){
 			setStatus("All fields are required.", "error");
+			return;
+		}
+		// Validate zip code is exactly 5 digits
+		if(zipCode.length !== 5){
+			setStatus("Zip code must be exactly 5 digits.", "error");
+			return;
+		}
+		// Validate phone number is exactly 10 digits (after stripping formatting)
+		if(phone.length !== 10){
+			setStatus("Phone number must be exactly 10 digits.", "error");
 			return;
 		}
 		if(!APPS_SCRIPT_URL){

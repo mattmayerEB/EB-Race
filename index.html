@@ -164,7 +164,7 @@
 					</div>
 					<div class="field">
 						<label for="zipCode">Zip Code<span class="req" aria-hidden="true">*</span></label>
-						<input id="zipCode" name="zipCode" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="postal-code" placeholder="75201" required>
+						<input id="zipCode" name="zipCode" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="75201" required>
 					</div>
 				</div>
 
@@ -175,7 +175,7 @@
 					</div>
 					<div class="field">
 						<label for="phone">Phone #<span class="req" aria-hidden="true">*</span></label>
-						<input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" autocomplete="tel" placeholder="5551234567" required>
+						<input id="phone" name="phone" type="tel" inputmode="numeric" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" maxlength="14" autocomplete="tel" placeholder="(555) 123-4567" required>
 					</div>
 				</div>
 
